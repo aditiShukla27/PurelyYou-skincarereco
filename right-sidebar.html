@@ -67,19 +67,44 @@
 										<form class="skin-form" action="/my-handling-form-page" method="post">
 											
 											<h3>What is your skin type?</h3>
-												<input type="radio" id="dry" name="skin-tyoe" value="dry"> Dry<br>  
-												<input type="radio" id="normal" name="skin-tyoe" value="normal"> Normal<br>
-												<input type="radio" id="combo" name="skin-tyoe" value="combination"/> Combination<br>
-												<input type="radio" id="oily" name="skin-tyoe" value="oily"/> Oily
+												<input type="radio" id="dry" name="skin-type" value="Good for Dry Skin"> Dry<br>  
+												<input type="radio" id="normal" name="skin-type" value="normal"> Normal<br>
+												<input type="radio" id="combo" name="skin-type" value="combination"/> Combination<br>
+												<input type="radio" id="oily" name="skin-type" value="Good for Oily Skin"/> Oily
 												
+											<h3>What is your weather like?</h3>
+												<input type="radio" id="dry" name="weather" value="dry"> Dry<br>  
+												<input type="radio" id="humid" name="weather" value="humid"> Humid<br>
+												<input type="radio" id="moderate" name="weather" value="moderate"/> Moderate
+											
 											<h3>What are your skincare goals?</h3>
 												<input type="checkbox" id="acne" name="skin-goals" value="Acne-Fighting"/> Clear acne<br>
 												<input type="checkbox" id="bright" name="skin-goals" value="Brightening"/> Treat dark spots<br>
 												<input type="checkbox" id="aging" name="skin-goals" value="Anti-Aging"/> Skin firmness is a concern<br>
 												<input type="checkbox" id="wound" name="skin-goals" value="Promotes Wound Healing"/> Even skin texture
-												
-											<h3>Message:</h3>
-												<textarea id="msg" name="user_message"></textarea>
+											
+											<h3>What is your skin sensitivity?</h3>
+												<input type="radio" id="irritation" name="sensitivity" value="Sensitive Skin"> Easily irritated<br>  
+												<input type="radio" id="no irritation" name="sensitivity" value="not irritated"> Rarely irritated<br>
+												<input type="radio" id="not sure" name="sensitivity" value="don't know"/> Not sure
+
+											<h3>What kind of acne do you have?</h3>
+												<input type="radio" id="mild" name="acne" value="mild"> Mild<br>  
+												<input type="radio" id="moderate" name="acne" value="moderate"> Moderate<br>
+												<input type="radio" id="severe" name="acne" value="severe"/> Severe<br>
+												<input type="radio" id="fungal" name="acne" value="Fungal Acne Trigger"/> Fungal
+
+											<h3>Do you want uv protection in your products?</h3>
+												<input type="radio" id="protection" name="uv" value="UV Protection"> Yes<br>  
+												<input type="radio" id="no protection" name="uv" value="no protection"> No
+
+											<h3>Do you want paraben free products?</h3>
+												<input type="radio" id="no paraben" name="paraben" value="no paraben"> Yes<br>  
+												<input type="radio" id="paraben" name="paraben" value="Paraben"> No
+
+											<h3>Do you have allergies?</h3>
+												<input type="radio" id="allergies" name="allergies" value="Allergens"> Yes<br>  
+												<input type="radio" id="no allergies" name="allergies" value="no allergies"> No
 											
 											<br>	
 											<button type="submit">Submit</button>
