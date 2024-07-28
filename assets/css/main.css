@@ -3112,9 +3112,9 @@ input, select, textarea {
 	.logos-slide{
 		display: inline-block;
 		white-space:nowrap;
-		animation: 5s slide infinite linear;
+		animation: 20s slide infinite linear;
 	}
 	.logos-slide img{
-		height: 50px;
+		height: 150px;
 		margin: 0 40px;
 	}
