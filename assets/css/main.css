@@ -3119,3 +3119,6 @@ input::-moz-focus-inner {
 		height: 150px;
 		margin: 0 40px;
 	}
+	.recs{
+		text-align: center;
+	}
