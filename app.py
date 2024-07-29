@@ -98,7 +98,8 @@ def filter():
         filter_by_cream = filter_by_feature(moisturizers_df, include)
         filter_out_cream = filter_out_features(moisturizers_df, exclude)
 
-        
+        return render_template('right_sidebar.html')
+
 
         
 
