@@ -1,7 +1,7 @@
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template
 import pandas as pd
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='.')
 
 def read_skincare_data(file_path):
     products = []
@@ -42,13 +42,14 @@ def filter_by_feature(df, feature):
 def filter_out_features(df, features_to_exclude):
     return df[df['Features'].apply(lambda x: not any(feature in x for feature in features_to_exclude))]
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def right_sidebar():
-    return render_template('right-sidebar.html')
+   return render_template('right-sidebar.html')
 
 @app.route('/filter', methods=['GET','POST'])
 def filter():
     if request.method == "POST":
+        print("Form submitted")
         skin_type = request.form.get('skin-type')
         weather = request.form.get('weather')
         skin_goals = request.form.getlist('skin-goals')
@@ -79,6 +80,10 @@ def filter():
 
         if parabens and parabens == 'no paraben':
             exclude.append('Paraben')
+        
+        if sensitivity and sensitivity == 'Sensitive Skin':
+            include.append('Good for Sensitive Skin')
+            exclude.append('Bad for Sensitive Skin')
 
         if allergies and allergies == 'Allergens':
             exclude.append('Allergens')
@@ -86,23 +91,25 @@ def filter():
         if skin_goals:
             include.append(skin_goals)
         
-        filter_by_clean = filter_by_feature(cleanser_df, include)
         filter_out_clean = filter_out_features(cleanser_df, exclude)
+        filter_by_clean = filter_by_feature(filter_out_clean, include)
+        top_clean = filter_by_clean.iloc[0] if not filter_by_clean.empty else None
 
-        filter_by_toner = filter_by_feature(toner_df, include)
         filter_out_toner = filter_out_features(toner_df, exclude)
+        filter_by_toner = filter_by_feature(filter_out_toner, include)
+        top_toner = filter_by_clean.iloc[0] if not filter_by_toner.empty else None
 
-        filter_by_serum = filter_by_feature(serums_df, include)
         filter_out_serum = filter_out_features(serums_df, exclude)
+        filter_by_serum = filter_by_feature(filter_out_serum, include)
+        top_serum = filter_by_serum.iloc[0] if not filter_by_serum.empty else None
 
-        filter_by_cream = filter_by_feature(moisturizers_df, include)
         filter_out_cream = filter_out_features(moisturizers_df, exclude)
+        filter_by_cream = filter_by_feature(filter_out_cream, include)
+        top_cream = filter_by_cream.iloc[0] if not filter_by_cream.empty else None
 
-        return render_template('right_sidebar.html')
+        return render_template('right-sidebar.html', top_clean = top_clean,
+                               top_toner = top_toner, top_serum = top_serum, top_cream = top_cream)
+    return render_template('right-sidebar.html')
 
-
-        
-
-
-if(__name__ == 'main'):
-    app.run()
+if __name__ == 'main':
+    app.run(debug=True)

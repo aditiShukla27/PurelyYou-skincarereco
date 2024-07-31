@@ -52,8 +52,7 @@
 											<p>Fill out this short form and receive products tailored to your needs!</p>
 										</header>
 										<a href="#" class="image featured"><img src="./images/essentials.jpg" alt="" /></a>
-										<form class="skin-form" action="/filter" method="GET,POST">
-											
+										<form class="skin-form" action="/filter" method="post">	
 											<h3>What is your skin type?</h3>
 												<input type="radio" id="dry" name="skin-type" value="Good for Dry Skin"> Dry<br>  
 												<input type="radio" id="normal" name="skin-type" value="normal"> Normal<br>
@@ -131,10 +130,11 @@
 									<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
 								</div>
 								<header>
-									<h3>Dolor sit consequat magna</h3>
+									<h3>Top Cleanser</h3>
 								</header>
-								<p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit. Curabitur
-								vel sem sit dolor neque semper magna lorem ipsum.</p>
+								<p>{% if top_cleanser %}
+										<li>Cleanser: {{ top_cleanser.Product }} - Features: {{ top_cleanser.Features }}</li>
+									{% endif %}</p>
 								<ul class="actions">
 									<li><a href="#" class="button">Elevate my awareness</a></li>
 								</ul>
@@ -144,10 +144,15 @@
 									<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
 								</div>
 								<header>
-									<h3>Dolor sit consequat magna</h3>
+									<h3>Top Toner and Serum</h3>
 								</header>
-								<p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit. Curabitur
-								vel sem sit dolor neque semper magna lorem ipsum.</p>
+								<p>{% if top_toner %}
+									<li>Toner: {{ top_toner.Product }} - Features: {{ top_toner.Features }}</li>
+									{% endif %}
+									{% if top_serum %}
+									<li>Serum: {{ top_serum.Product }} - Features: {{ top_serum.Features }}</li>
+									{% endif %}
+								</p>
 								<ul class="actions">
 									<li><a href="#" class="button">Elevate my awareness</a></li>
 								</ul>
@@ -157,10 +162,11 @@
 									<a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
 								</div>
 								<header>
-									<h3>Dolor sit consequat magna</h3>
+									<h3>Top Moisturizer</h3>
 								</header>
-								<p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit. Curabitur
-								vel sem sit dolor neque semper magna lorem ipsum.</p>
+								<p>{% if top_moisturizer %}
+									<li>Moisturizer: {{ top_moisturizer.Product }} - Features: {{ top_moisturizer.Features }}</li>
+									{% endif %}</p>
 								<ul class="actions">
 									<li><a href="#" class="button">Elevate my awareness</a></li>
 								</ul>
